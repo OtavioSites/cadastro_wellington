@@ -1,34 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
-
+<!-- index.html -->
+<!doctype html>
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./css/index.css">
+  <meta charset="utf-8">
+  <title>Cadastro de Usuários</title>
+  <link rel="stylesheet" href="./css/index.css">
 </head>
-
 <body>
+  <main class="container">
+    <h1>Cadastro de Usuário</h1>
 
-    <div id="container_cadastro">
-        <form id="formulario">
+    <form id="formulario" enctype="multipart/form-data" class="form">
+      <label>Nome
+        <input type="text" name="nome" id="nome" maxlength="150">
+      </label>
 
-            <label for="nome">Nome: </label>
-            <input type="text" id="nome" name="nome" maxlength="200">
+      <label>Email
+        <input type="email" name="email" id="email" maxlength="200">
+      </label>
 
-            <label for="email">Email:</label>
-            <input type="text" id="email" name="email" maxlength="200">
-            <div id="arquivo_upload_container">
-                <label for="">Escolha um arquivo</label>
-                <input type="file" name="avatar" id="avatar" accept="image/jpeg">
-                <img src="" alt="" id="avatarImg">
-            </div>
-            <button type="submit" id="btn_cadastro" name="btn_cadastro">Cadastrar</button>
-            <button id="btn_lista_usuarios" type="button">Lista de Usuários</button>
-        </form>
-        <p id="teste"></p>
-    </div>
-    <script src="script.js"></script>
+      <label>Foto de perfil (avatar)
+        <input type="file" name="avatar" id="avatar" accept="image/*">
+      </label>
+
+      <button type="submit">Cadastrar</button>
+    </form>
+
+    <p><a class="btn" href="listar_usuarios.php">Ver usuários cadastrados</a></p>
+  </main>
+  
+  <script src="script.js"></script>
 </body>
-
 </html>

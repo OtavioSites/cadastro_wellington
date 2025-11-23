@@ -1,10 +1,8 @@
 <?php
 //Permite o acesso do fetch sem o impedimento do CORS
 header("Access-Control-Allow-Origin: http://127.0.0.1:5500");
-header("Access-Control-Allow-Methods: POST, OPTIONS");
+header("Access-Control-Allow-Methods: POST, OPTIONS, GET, DELETE");
 header("Access-Control-Allow-Headers: Content-Type");
-
-
 
 require_once('conexao.php');
 
@@ -14,26 +12,54 @@ $fileUp = explode(".", $file['name']);
 $dir = 'uploads/';
 
 $arquivosPermitidos = ["jpeg", "png", "jpg", "webp"];
+$conexao->beginTransaction();
+$files = $_FILES['avatar']['name'];
+$email = $_POST['email'];
+$nome = $_POST['nome'];
+$dados = [
+   "nome" => $nome,
+   "email" => $email,
+   "avatar" => $files
+];
+
+$pdo = $conexao->prepare("INSERT INTO usuarios (nome, email, avatar) VALUES (:nome, :email, :avatar)");
+
+$pdo->execute($dados);
 
 if (in_array($fileUp[sizeof($fileUp) - 1], $arquivosPermitidos)) {
 
    if (file_exists($dir)) {
-      move_uploaded_file($_FILES['avatar']['tmp_name'], "uploads/" . $file['name']);
+      if (move_uploaded_file($_FILES['avatar']['tmp_name'], "uploads/" . $file['name'])) {
+         $conexao->commit();
+         echo json_encode(["status" => "success", "message" => "Arquivo enviado com sucesso"]);
+      } else {
+        echo json_encode(["status" => "error", "message" => "Erro ao enviar"]);
+         $conexao->rollBack();
+      }
+
+   } else {
+      echo json_encode(["status" => "error", "message" => "Tipo de arquivo não permitido"]);
    }
-   
-      
 
-   
+
+
+
 }
-$files = $_FILES['avatar']['name'];
-$email = $_POST['email'];
-$nome = $_POST['nome'];
-$sql = "INSERT INTO usuarios (nome, email, avatar) VALUES (?, ?, ?)";
 
 
-$pdo = $conexao->prepare($sql);
 
-$pdo->execute([$nome, $email, $files]);
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

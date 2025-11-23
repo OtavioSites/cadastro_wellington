@@ -1,0 +1,108 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+    padding: 0;
+    transition: all 0.2s;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+    width: 100vw;
+    min-height: 100vh;
+    max-height: max-content;
+
+}
+
+#container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 50px;
+}
+
+
+#users{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 70vh;
+    max-height: max-content;
+    flex-direction: column;
+    gap: 30px;
+
+}
+
+
+.user_card{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    width: 100%;
+    height: 100px;
+    gap: 15px;
+    border-radius: 15px;
+    box-shadow: 0 0px 5px gray;
+    font-size: 1.1rem;
+    padding: 15px;
+}
+.id{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    width: 30px;
+}
+.img{
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.img > img{
+    width: 30px;
+    height: 30px;
+    transform: scale(2);
+    border-radius: 100%;
+    box-shadow: 0 0 1px gray;
+}
+.nome{
+    width: 50%;
+    height: 100px;
+    display: flex;
+    justify-content: left;
+    padding: 0 2rem;
+    align-items: center;
+}
+.email{
+    width: 40%;
+    height: 100px;
+    display: flex;
+    justify-content: left;
+    padding: 0 2rem;
+    align-items: center;
+}
+
+.edit{
+    height: 100px;
+    width: 40px;
+    gap: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+   
+}
+.edit > button{
+     cursor: pointer;
+     background-color: transparent;
+     border: 0;
+     
+}
+.edit > button > img{
+    width: 20px;
+}

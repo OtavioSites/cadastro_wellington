@@ -1,0 +1,230 @@
+:root {
+    --bg: #080808;
+    --box: #1a1a1a13;
+    --border: #c2c2c2;
+    --border-light: #ddd;
+    --text: #ffffff;
+    --muted: #666;
+    --primary: #0b74de;
+    --primary-hover: #0a63bd;
+    --link: #0971da;
+    --success: #a7a7a770;
+
+    --avatar-size: 80px;
+    --avatar-radius: 8px;
+
+    --t-fast: 0.20s;
+    --t-base: 0.25s;
+
+    --shadow: 0 6px 18px rgba(0,0,0,0.06);
+
+    --hover-dark: rgba(0,0,0,0.75);
+    --hover-blur: blur(2px);
+}
+
+* {
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: var(--bg);
+    width: 100lvw;
+    height: 100lvh;
+    margin: 0;
+    padding: 20px;
+    color: var(--text);
+    background-image: url(./photo-1700316740839-f5afe22536e4.jpeg);
+    background-color: #0b83b375;
+    background-blend-mode: hard-light;
+    background-size: cover;
+    /* background-color: #080808;
+    background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #080808 40px ), repeating-linear-gradient( #13131355, #131313 ); */
+}
+
+a {
+    color: var(--link);
+    text-decoration: none;
+    transition: var(--t-fast);
+}
+
+a:hover {
+    opacity: 0.8;
+}
+
+.container {
+    max-width: calc(640px + 80px);
+    margin: 0 auto;
+    background: linear-gradient(
+    135deg,
+    rgba(170, 170, 170, 0.4) 0%,
+    rgba(151, 151, 151, 0.12) 35%,
+    rgba(218, 218, 218, 0) 80%
+);
+
+    padding: calc(16px + 4px);
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(4px);
+    border: 1px solid var(--border);
+}
+
+h1 {
+    margin-top: 0;
+}
+
+.form label {
+    display: block;
+    margin-bottom: 12px;
+}
+
+.form input[type="text"],
+.form input[type="email"],
+.form input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    margin-top: 4px;
+}
+
+button, .btn {
+    display: inline-block;
+    padding: 10px 16px;
+    background: var(--primary);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    transition: var(--t-fast);
+}
+
+button:hover, .btn:hover {
+    background: var(--primary-hover);
+}
+
+.form button {
+    background: var(--success);
+    border: solid 1px var(--border-light);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 12px;
+}
+
+th, td {
+    padding: 10px 6px;
+    border-bottom: 1px solid var(--border);
+    text-align: left;
+    vertical-align: middle;
+}
+
+.small {
+    font-size: 0.9rem;
+    color: var(--muted);
+}
+
+.avatar {
+    width: var(--avatar-size);
+    height: var(--avatar-size);
+    object-fit: cover;
+    border-radius: var(--avatar-radius);
+    border: 1px solid var(--border-light);
+}
+
+.divImg {
+    width: var(--avatar-size);
+    height: var(--avatar-size);
+    border-radius: var(--avatar-radius);
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    border: 1px solid var(--border-light);
+}
+
+.divImg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0);
+    backdrop-filter: none;
+    transition: var(--t-base);
+    pointer-events: none;
+}
+
+.divImg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: calc(10px + 2px);
+    opacity: 0;
+    transition: var(--t-base);
+    pointer-events: none;
+    text-align: center;
+}
+
+.divImg:hover::before {
+    background: var(--hover-dark);
+    backdrop-filter: var(--hover-blur);
+    border: 1px solid white;
+}
+
+.divImg:hover::after {
+    content: "Clique para abrir";
+    opacity: 1;
+}
+
+input[type='text'], input[type='file']{
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+input[type="file"] {
+    padding: 6px;
+    height: 66px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+input[type="file"]::file-selector-button {
+    background-color: rgba(19, 19, 19, 0.5);
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    border: solid 1px var(--border-light);
+    margin-right: 16px;
+    transition: .09s;
+    cursor: pointer;
+    border: solid 1px var(--border);
+}
+
+input[type="file"]::file-selector-button:hover {
+    background-color: rgba(211, 211, 211, 0.384);
+    color: white;
+}
+
+button{
+    height: max-content;
+    width: max-content;
+    padding: 10px;
+    font-size: 16px;
+    height: max-content;
+}
+
+.btns{
+    font-size: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+}

@@ -4,31 +4,36 @@ let email = document.querySelector("#email");
 let nome = document.querySelector("#nome");
 let file = document.getElementById("avatar");
 let form = document.getElementById("formulario");
-let p = document.querySelector("#teste")
-form.addEventListener("submit", async (event) => {
-  event.preventDefault();
+
+
+
+
+const fetchParaPhp =  async (event) => {
+  event.preventDefault()
 
   const formData = new FormData(form); //Cria um objeto para enviar dados via método http, bom para enviar arquivos.
   //Adiciona uma informação de um arquivo, files[] é o nome que vai ser dado no php
  
-  let data = Object.fromEntries(formData);
+  let data = Object.fromEntries(formData);//Transforma em um objeto
   console.log(data);
   try {
-    await fetch('http://localhost:8000', {
+    let res = await fetch('http://localhost:8000/inserir_users.php', {
       method: "POST",
       body: formData
-    }).then(response => response.text())
-    .then(data => {
-      console.log(data);
+    });
 
-    })
+    let response = await res.json();
+    console.log(response);
    
+    
   } catch (error) {
     console.log(error)
   }
 
 
-})
+}
+
+form.addEventListener("submit", fetchParaPhp);
 
 // botao.addEventListener("click", (e) => {
   
