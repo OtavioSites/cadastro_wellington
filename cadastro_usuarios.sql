@@ -1,0 +1,12 @@
+
+CREATE DATABASE cadastro_usuarios;
+
+USE cadastro_usuarios;
+
+CREATE TABLE usuarios (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  nome VARCHAR(150) NOT NULL,
+  email VARCHAR(200) NOT NULL,
+  avatar VARCHAR(255) DEFAULT NULL
+
+)
