@@ -8,25 +8,31 @@
 </head>
 <body>
     <div id="container">
+        <header><h1>Lista de Usuários</h1><button id="cadastrar_btn">Cadastrar</button></header>
         <div id="users">
-            <h1>Lista de Usuários</h1>
-            <div class="user_card">
-                <div class="id">1</div>
-                <div class="img"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTka4D3TCzUkOPBEeJ-cOTYacaEPQaJv8buGqsWDe_fGSllYUjjdsLKkDZK2NwOwRJ5rnMC8cKEJwBVgYC4qMCEvovNO2KsKysmD-BkJiqIFg&s=10" alt=""></div>
-                <div class="nome">
-                    <p class="nome_para">a</p>
-                </div>
-                <div class="email">
-                    <p class="email_para">a</p>
-                </div>
-                <div class="edit">
-                    <button class="excluir"><img src="svg/trash-can-svgrepo-com.svg" alt=""></button>
-                    <button class="editar"><img src="svg/pencil-edit-button-svgrepo-com.svg" alt=""></button>
-                </div>
-            </div>
+            
+            
         </div>
+        
     </div>
-
+    <div id="popup_edit" style="display: none;" enctyo>
+        <form id="editarForm" enctype="multipart/form-data">
+            <div>
+            <label for="">Nome: </label>
+            <input type="text" name="nome" id="nome" maxlength="200"></div>
+            <div>
+            <label for="">Email: </label>
+            <input type="text" name="email" id="email" maxlength="100"></div>
+            <div id="avatarDiv">
+            <label for="">Avatar</label>
+            <input type="file" name="avatar" id="avatar" accept="image/jpg"></div>
+            <div id="botoes">
+                <button id="confirm_btn" type="submit">Confirmar</button>
+                <button id="cancel_btn" type="button">Cancelar</button>
+                
+            </div>
+        </form>
+    </div>
 
     <script src="./scripts/listar_fetch.js"></script>
 </body>
