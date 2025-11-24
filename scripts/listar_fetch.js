@@ -74,12 +74,49 @@ carregarCards();
 
         })}
     if(botaoDeletar){
-        let user_card = botaoEditar.closest(".user_card");
+        let user_card = botaoDeletar.closest(".user_card");
         let id = user_card.querySelector(".id");
         id = id.textContent.trim();
         console.log("ID: " + id);
+if (botaoDeletar) {
+        
+        // ✅ CORREÇÃO: Usamos o 'user_card' que já foi encontrado ou buscamos a partir do botaoDeletar
+        let idElement = user_card.querySelector(".id");
+        let id = idElement.textContent.trim();
+        console.log("ID para Deleção: " + id);
 
+        // Confirmação para evitar exclusões acidentais
+        if (confirm(`Tem certeza que deseja deletar o usuário com ID: ${id}?`)) {
+            // Chama a função de deleção
+            deletarUsuario(id);
+        }
+}}
+
+
+// --- FUNÇÃO PARA DELETAR O USUÁRIO ---
+async function deletarUsuario(id) {
+    try {
+        // Envio da requisição de deleção (usando POST ou DELETE, dependendo do seu PHP)
+        let response = await fetch("http://localhost:8000/deletar_usuario.php", {
+            method: "POST", // ou "DELETE" se seu backend aceitar
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: `ID=${encodeURIComponent(id)}` // Envia o ID como forma de formulário
+        });
+        
+        let data = await response.json(); // Assumindo que o PHP retorna JSON (status/message)
+        console.log(data);
+
+        if (data.status === "success") {
+            alert(`Usuário ID ${id} deletado com sucesso!`);
+            carregarCards(); // Recarrega a lista para remover o card deletado
+        } else {
+            alert(`Erro ao deletar: ${data.message}`);
+        }
+
+    } catch (error) {
+        console.error("Erro na deleção:", error);
+        alert("Ocorreu um erro de rede ao tentar deletar o usuário.");
     }
-})
-
-
+}
