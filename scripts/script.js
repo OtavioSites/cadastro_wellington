@@ -12,7 +12,7 @@ const fetchParaPhp =  async (event) => {
   event.preventDefault()
 
   const formData = new FormData(form); //Cria um objeto para enviar dados via método http, bom para enviar arquivos.
-  //Adiciona uma informação de um arquivo, files[] é o nome que vai ser dado no php
+  
  
   let data = Object.fromEntries(formData);//Transforma em um objeto
   console.log(data);

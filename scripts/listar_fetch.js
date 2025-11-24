@@ -43,6 +43,7 @@ carregarCards();
     user_list.addEventListener("click", (btn) => {
     
     let botaoEditar = btn.target.closest(".editar");
+    let botaoDeletar = btn.target.closest(".excluir");
    
     if(botaoEditar){
         let user_card = botaoEditar.closest(".user_card");
@@ -52,9 +53,9 @@ carregarCards();
         popup.style.display = "flex";
 
         form.addEventListener("submit", async (event) => {
-            event.preventDefault();
 
             const formData = new FormData(form);
+            formData.append("ID", id);
             console.log(formData);
             let data = Object.fromEntries(formData);
             console.log(data);
@@ -63,13 +64,20 @@ carregarCards();
             await fetch("http://localhost:8000/editar_usuario.php", {
                 method: "POST",
                 body: formData
-            }).then(response => response.json())
+            }).then(response => response.text())
             .then(data => {console.log(data)})
 
         }catch(error){
             console.log(error);
         }
-        })
+
+
+        })}
+    if(botaoDeletar){
+        let user_card = botaoEditar.closest(".user_card");
+        let id = user_card.querySelector(".id");
+        id = id.textContent.trim();
+        console.log("ID: " + id);
 
     }
 })
