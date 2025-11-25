@@ -1,10 +1,23 @@
-let imagem = document.querySelector("#avatarImg");
-let botao = document.querySelector("#btn_cadastro");
+let imagem = document.querySelector("#preview");
 let email = document.querySelector("#email");
 let nome = document.querySelector("#nome");
 let file = document.getElementById("avatar");
 let form = document.getElementById("formulario");
 
+
+file.addEventListener("change", (event) => {
+
+  let arquivo = event.target.files[0];
+const reader = new FileReader();
+
+reader.onload = function(e){
+  imagem.src = e.target.result;
+  console.log(e.target.result)
+  imagem.style.display = "block";
+}
+
+reader.readAsDataURL(arquivo);
+})
 
 
 

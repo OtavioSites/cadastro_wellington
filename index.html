@@ -1,29 +1,32 @@
-<!-- index.html -->
 <!doctype html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="utf-8">
   <title>Cadastro de Usuários</title>
   <link rel="stylesheet" href="./css/index.css">
 </head>
+
 <body>
   <main class="container">
     <h1>Cadastro de Usuário</h1>
-
     <form id="formulario" enctype="multipart/form-data" class="form">
-      <label>Nome
+      <div>
+        <label for="nome">Nome</label>
         <input type="text" name="nome" id="nome" maxlength="150">
-      </label>
-
-      <label>Email
+      </div>
+      <div>
+        <label for="email">Email</label>
         <input type="email" name="email" id="email" maxlength="200">
-      </label>
-
-      <label>Foto de perfil (avatar)
+      </div>
+      <label for="avatar" id="titleAvatar">Foto de perfil (avatar)</label>
+      <div>
+        
         <input type="file" name="avatar" id="avatar" accept="image/*">
-      </label>
+        <img src="" alt="" id="preview">
+      </div>
 
-      <button type="submit">Cadastrar</button>
+      <button type="submit" id="submit_btn">Cadastrar</button>
     </form>
 
     <p><a class="btn" href="./listar_usuarios.html">Ver usuários cadastrados</a></p>
@@ -31,4 +34,5 @@
 
   <script src="./scripts/script.js"></script>
 </body>
+
 </html>
