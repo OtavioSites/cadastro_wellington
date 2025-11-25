@@ -37,7 +37,7 @@ document.querySelector("#cadastrar_btn").addEventListener("click", () => {
 carregarCards();
 
 
-
+    let x = document.querySelector("#Capa_1");
     let popup =  document.querySelector("#popup_edit");
     let form = document.getElementById("editarForm");
     user_list.addEventListener("click", (btn) => {
@@ -54,6 +54,10 @@ carregarCards();
         console.log("ID: " + id);
         popup.style.display = "flex";
         cancel.addEventListener("click", () => {
+            popup.style.display = "none";
+
+        })
+        x.addEventListener("click", () => {
             popup.style.display = "none";
 
         })
