@@ -197,7 +197,10 @@ header{
     align-items: center;
     width: 100%;
 }
-#head > svg{
+
+
+
+#head > #Capa_1{
     width: 20px;
     height: 20px;
     cursor: pointer;

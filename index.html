@@ -11,21 +11,19 @@
   <main class="container">
     <h1>Cadastro de Usuário</h1>
     <form id="formulario" enctype="multipart/form-data" class="form">
-      <div>
-        <label for="nome">Nome</label>
-        <input type="text" name="nome" id="nome" maxlength="150">
+      <div id="nome-container">
+        <input type="text" name="nome" id="nome" placeholder="Ruyter" maxlength="150">
       </div>
-      <div>
-        <label for="email">Email</label>
-        <input type="email" name="email" id="email" maxlength="200">
+      <div id="email-container">
+        <input type="email" name="email" id="email" placeholder="example@gmail.com" maxlength="200">
       </div>
-      <label for="avatar" id="titleAvatar">Foto de perfil (avatar)</label>
+      
       <div>
-        
+        <label for="avatar" id="titleAvatar">Foto de perfil (avatar)</label>
         <input type="file" name="avatar" id="avatar" accept="image/*">
         <img src="" alt="" id="preview">
       </div>
-
+      <p id="aviso" style="display: none; color: red; font-size: 1.2rem;"></p>
       <button type="submit" id="submit_btn">Cadastrar</button>
     </form>
 

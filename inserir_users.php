@@ -9,22 +9,39 @@ require_once('conexao.php');
 $file = $_FILES['avatar'];
 
 $fileUp = explode(".", $file['name']);
-$dir = 'uploads/';
 
+$dir = 'uploads/';
+$dadoAntigos = [];
 $arquivosPermitidos = ["jpeg", "png", "jpg", "webp"];
-$conexao->beginTransaction();
+
 $files = $_FILES['avatar']['name'];
-$email = $_POST['email'];
-$nome = $_POST['nome'];
+$email = trim($_POST['email']);
+$nome = trim($_POST['nome']);
+$stmt = $conexao->query("SELECT nome, email, avatar FROM usuarios");
+$stmt->execute();
+$dadoAntigos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+
 $dados = [
    "nome" => $nome,
    "email" => $email,
    "avatar" => $files
 ];
-
+$pdo = $conexao->beginTransaction();
 $pdo = $conexao->prepare("INSERT INTO usuarios (nome, email, avatar) VALUES (:nome, :email, :avatar)");
 
 $pdo->execute($dados);
+
+$nome = strtolower($nome);
+$email = strtolower($email);
+
+foreach ($dadoAntigos as $indice => $user) {
+   if($user['nome'] == $nome || $user['email'] == $email){
+      echo json_encode(["status" => "error", "message" => "Nome ou email ja estão cadastrados"]);
+      $conexao->rollBack();
+      exit();
+   }
+}
 
 if (in_array($fileUp[sizeof($fileUp) - 1], $arquivosPermitidos)) {
 

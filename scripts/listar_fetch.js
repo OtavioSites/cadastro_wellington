@@ -84,6 +84,7 @@ carregarCards();
         })}
     if(botaoDeletar){
         if(botaoDeletar){
+        document.querySelector('body').onreset;
         let user_card = botaoDeletar.closest(".user_card");
         let id = user_card.querySelector(".id");
         id = id.textContent.trim();
